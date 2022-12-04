@@ -1,0 +1,2 @@
+C:\Users\bel0130\source\repos\FitnessReservationSystemReact\FitnessReservationSystemReact\obj\Debug\fitnessreservationsystemreact.esproj.SuggestedBindingRedirects.cache
+C:\Users\bel0130\source\repos\FitnessReservationSystemReact\FitnessReservationSystemReact\obj\Debug\fitnessreservationsystemreact.esproj.CoreCompileInputs.cache
