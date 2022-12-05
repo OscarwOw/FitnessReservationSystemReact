@@ -6,7 +6,7 @@ function App() {
 
     useEffect(() => {
         setIsLoading(true);
-        fetch('https://localhost:7223/api/Course.json').then((response) => {
+        fetch('https://localhost:7223/api/Course').then((response) => {
             return response.json();
         }).then((data) => {
             const objects = [];
@@ -36,7 +36,11 @@ function App() {
     return (
       <div>
             <h1>hello application</h1>
-
+            <ul>
+                {loadedObjects.map((obj) => { 
+                    return <li key={obj.id}>{obj.name}</li>
+                })}
+            </ul>
           
       </div>
   );
