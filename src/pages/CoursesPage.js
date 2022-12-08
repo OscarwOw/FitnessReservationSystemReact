@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
+import CoursesList from '../components/Courses/CoursesList';
+
 
 function CoursesPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [loadedObjects, setLoadedObjects] = useState();
+
     useEffect(() => {
         setIsLoading(true);
         fetch('https://localhost:7223/api/Course').then((response) => {
@@ -31,17 +34,13 @@ function CoursesPage() {
 
         )
     }
-    return(
-        
+    return (
 
+        
 
             <div>
                 <h1>hello application</h1>
-                <ul>
-                    {loadedObjects.map((obj) => {
-                        return <li key={obj.id}>{obj.name}</li>
-                    })}
-                </ul>
+                <CoursesList items={loadedObjects} />
 
             </div>
        

@@ -13,6 +13,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="src\components\layout\" />
+    <Folder Include="src\components\Courses\" />
+    <Folder Include="src\components\ui\" />
     <Folder Include="src\store\" />
   </ItemGroup>
 </Project>
