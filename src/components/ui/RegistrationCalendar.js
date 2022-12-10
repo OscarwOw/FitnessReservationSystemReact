@@ -28,23 +28,32 @@ function RegistrationCalendar(props) {
             return hours[row] + " - " + hours[row + 1];
         }
         else {
+
             
+            for (let i = 0; i < props.items.length; i++) {
+                
+                if (props.items[i].date.substr(8, 2) === dates[col - 1].substr(8, 2) && props.items[i].date.substr(11, 2) === hours[row].substr(0, 2)) {
+                    
+                    console.log(props.items[i])
+                    return props.items[i].name
+                
+                }
+            }
+
             
             let newdate = new Date(dates[col - 1].substr(0, 4), dates[col - 1].substr(5, 2) - 1, dates[col - 1].substr(8, 2)-1+2)
             let finaldate = newdate.toISOString().substr(0,10)
-            console.log(newdate)
+            
 
             //newdate = newdate.setHours(hours[row]);
             //newdate = newdate.setDate(newdate.getDate()+ col - 1 )
             
             
-
-            return finaldate + " " + hours[row];
+            return ' ';
+            //return finaldate + " " + hours[row];
         }
     }
-    function ToStringdate(year, month, day) {
-        return new Date(year, month, day)
-    }
+
 
 
 
