@@ -46,7 +46,7 @@ function CourseDetailsPage() {
             setLoadedTags(data);
             setIsLoading(!(list[0] && list[1] && list[2]));
         });
-        let getLecturesString = 'http://192.168.100.10:5076/api/Course/' + courseId + '/Lectures'
+        let getLecturesString = 'http://192.168.100.10:5076/api/Course/' + courseId + '/Lectures/NextWeek'
         fetch(getLecturesString).then((response) => {
             return response.json();
         }).then((data) => {
@@ -75,6 +75,22 @@ function CourseDetailsPage() {
     return (
         <div>
             <h1>Course Name: {loadedObject.name}</h1>
+            <p>Duration: {loadedObject.Lenght}</p>
+            <p>Price: {loadedObject.price}</p>
+            <h2>Tags:</h2>
+            <ul>{
+                loadedTags.map(tag => { 
+                    return <li>#{tag.name}</li>
+                })
+            }
+            </ul>
+            <h2>Lectures:</h2>
+            <ul>{
+                loadedLectures.map(lecture => {
+                    return <li>{lecture.name}  { lecture.date}</li>
+                })
+            }
+            </ul>
         </div>
 
     );
