@@ -3,6 +3,7 @@ import addHours from '../Engine/AddHours';
 import addDays from '../Engine/AddDays';
 
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 
 
@@ -11,6 +12,10 @@ function RegistrationCalendar(props) {
     const [isLoading, setIsLoading] = useState(true);
     const [dates, setDates] = useState();
     const [hours, setHours] = useState();
+
+    function getNavigationLink(id) {
+        return '/CreateReservation/' + id
+    }
     
 
     function CreateContent(col, row) {
@@ -19,16 +24,15 @@ function RegistrationCalendar(props) {
         }
         else {         
             for (let i = 0; i < props.items.length; i++) {
-                
                 if (props.items[i].date.substr(8, 2) === dates[col - 1].substr(8, 2) && props.items[i].date.substr(11, 2) === hours[row].substr(0, 2)) {
-                    
-                    console.log(props.items[i])
                     return (
-                        <div className={classes.colContent}>
-                            <p>{props.items[i].name}</p>
-                            <p>Couch: {props.items[i].couch}</p>
-                            <p>Pocet prihlasenych: {props.items[i].registredCount}/{props.items[i].capacity}</p>
-                        </div>);
+                        <Link to={getNavigationLink(props.items[i].id)}>
+                            <div className={classes.colContent} >
+                                <p>{props.items[i].name}</p>
+                                <p>Couch: {props.items[i].couch}</p>
+                                <p>Pocet prihlasenych: {props.items[i].registredCount}/{props.items[i].capacity}</p>
+                            </div>
+                        </Link>);
                 
                 }
             }           

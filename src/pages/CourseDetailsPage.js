@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 
 function CourseDetailsPage() {
@@ -8,8 +8,13 @@ function CourseDetailsPage() {
     const [loadedObject, setLoadedObject] = useState();
     const [loadedTags, setLoadedTags] = useState();
     const [loadedLectures, setLoadedLectures] = useState();
+
     var list = [false, false, false]
 
+
+    function getNavigationLink(id) {
+        return '/CreateReservation/' + id
+    }
 
     useEffect(() => {
         setIsLoading(true);
@@ -80,14 +85,14 @@ function CourseDetailsPage() {
             <h2>Tags:</h2>
             <ul>{
                 loadedTags.map(tag => { 
-                    return <li>#{tag.name}</li>
+                    return <li key={ tag.id}>#{tag.name}</li>
                 })
             }
             </ul>
             <h2>Lectures:</h2>
             <ul>{
                 loadedLectures.map(lecture => {
-                    return <li>{lecture.name}  { lecture.date}</li>
+                    return <Link key={lecture.id} lectureid={lecture.id} to={getNavigationLink(lecture.id)}><li>{lecture.name}  {lecture.date}</li></Link>
                 })
             }
             </ul>

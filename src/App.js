@@ -8,6 +8,7 @@ import CalendarPage from './pages/CalendarPage';
 import CourseDetailsPage from './pages/CourseDetailsPage';
 import CoursesPage from './pages/CoursesPage';
 import HomePage from './pages/HomePage';
+import AddReservationPage from './pages/AddReservationPage';
 
 
 
@@ -22,6 +23,7 @@ function App() {
                 <Route path="courses/:courseId" element={<CourseDetailsPage />}/>
                 <Route path="/calendar" element={<CalendarPage />} />
                 <Route path="/about" element={<AboutPage />} />
+                <Route path="/CreateReservation/:id" element={<AddReservationPage />} />
             </Routes>
         </Layout>
     );
