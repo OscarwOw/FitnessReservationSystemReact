@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import CoursesList from '../components/Courses/CoursesList';
 
+import { Routes, Route, Link, Outlet } from 'react-router-dom';
+
 
 function CoursesPage() {
     const [isLoading, setIsLoading] = useState(true);
@@ -38,11 +40,12 @@ function CoursesPage() {
 
         
 
-            <div>
-                <h1>hello application</h1>
-                <CoursesList items={loadedObjects} />
+        <div>
+            <h1>hello application</h1>
+            <CoursesList items={loadedObjects} />
 
-            </div>
+
+        </div>
        
     );
 
