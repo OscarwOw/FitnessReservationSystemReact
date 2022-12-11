@@ -5,9 +5,35 @@
 .th {
     border-bottom: 1px solid black;
     border: 2px solid black;
+    height: 80px;
+    width: 200px;
 }
 
-.td {
+.tr {
     text-align: center;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 13px;
+    letter-spacing: -1.5px;
+    word-spacing: 1.4px;
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
     border: 2px solid black;
 }
+
+
+.colContent {
+    height: 100%;
+    width: 100%;
+    padding-top: 5px;
+    background-color: rgba(207, 207, 207, 0.7);
+    animation: ease-in-out;
+    transition: 1.1s;
+}
+
+    .colContent:hover {
+        background-color: rgba(195, 200, 255, 0.7);
+    }

@@ -8,7 +8,7 @@ function CalendarPage() {
 
     useEffect(() => {
         setIsLoading(true);
-        fetch('https://localhost:7223/api/Lecture').then((response) => {
+        fetch('http://192.168.100.10:5076/api/Lecture/NextWeek').then((response) => {
             return response.json();
         }).then((data) => {
             const objects = [];

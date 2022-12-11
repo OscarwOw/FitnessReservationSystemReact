@@ -9,9 +9,9 @@
     margin: 20px;
     padding: 7px;
 }
-
-
     .card:hover {
         transform: scale(1.04);
         box-shadow: 0 4px 16px rgba(195, 200, 255, 0.7);
     }
+
+

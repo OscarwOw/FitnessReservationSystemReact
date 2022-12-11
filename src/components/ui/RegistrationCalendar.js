@@ -1,4 +1,6 @@
 import classes from './RegistrationCalendar.module.css';
+import addHours from '../Engine/AddHours';
+import addDays from '../Engine/AddDays';
 
 import { useState, useEffect } from 'react';
 
@@ -9,53 +11,29 @@ function RegistrationCalendar(props) {
     const [isLoading, setIsLoading] = useState(true);
     const [dates, setDates] = useState();
     const [hours, setHours] = useState();
-
-    function addDays(date, days) {
-        let result = new Date(date);
-        result.setDate(result.getDate() + days);
-        return result;
-    }
-
-    function addHours(date, hours) {
-        let result = new Date(date);
-        result.setHours(date.getHours() + hours);
-
-        return result;
-    }
+    
 
     function CreateContent(col, row) {
         if (col === 0) {
             return hours[row] + " - " + hours[row + 1];
         }
-        else {
-
-            
+        else {         
             for (let i = 0; i < props.items.length; i++) {
                 
                 if (props.items[i].date.substr(8, 2) === dates[col - 1].substr(8, 2) && props.items[i].date.substr(11, 2) === hours[row].substr(0, 2)) {
                     
                     console.log(props.items[i])
-                    return props.items[i].name
+                    return (
+                        <div className={classes.colContent}>
+                            <p>{props.items[i].name}</p>
+                            <p>Couch: {props.items[i].couch}</p>
+                            <p>Pocet prihlasenych: {props.items[i].registredCount}/{props.items[i].capacity}</p>
+                        </div>);
                 
                 }
-            }
-
-            
-            let newdate = new Date(dates[col - 1].substr(0, 4), dates[col - 1].substr(5, 2) - 1, dates[col - 1].substr(8, 2)-1+2)
-            let finaldate = newdate.toISOString().substr(0,10)
-            
-
-            //newdate = newdate.setHours(hours[row]);
-            //newdate = newdate.setDate(newdate.getDate()+ col - 1 )
-            
-            
-            return ' ';
-            //return finaldate + " " + hours[row];
+            }           
         }
     }
-
-
-
 
     useEffect(() => {
         setIsLoading(true);
@@ -70,13 +48,10 @@ function RegistrationCalendar(props) {
             let hour = addHours(hoursnow, i);
             l_dates.push(date.toISOString().substr(0,10));
             l_hours.push(hour.getUTCHours() + ":" + (hour.getMinutes())+ "0");
-
-        }
-        
+        }        
         setIsLoading(false);
         setDates(l_dates);
         setHours(l_hours);
-
     }, []);
     if (isLoading) {
         return (
@@ -116,12 +91,7 @@ function RegistrationCalendar(props) {
                 </tbody>
             </table>
         </div>
-    );
-    
-
-    
-
-    
+    );   
 }
 
 export default RegistrationCalendar;
