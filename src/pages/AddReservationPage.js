@@ -1,44 +1,54 @@
-import React, { useState } from 'react';
+import classes from './AddReservationPage.module.css';
 
-
-
-const AddReservationPage = () => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
-
+function AddReservationPage() {
+    const currentURL = window.location.href;
+    const urlParts = currentURL.split("/");
+    const valueAfterSecondSlash = urlParts[4];
 
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setDate(new Date().toISOString().substring(0, 10));
-        const url = window.location.href;
-        const urlParts = url.split("?");
-        const queryString = urlParts[1];
-        console.log(queryString)
-        let getLecturesString = 'http://192.168.100.10:5076/api/Course?lectureId=' + queryString
-        fetch(getLecturesString, {
+        let fetchstring = 'http://192.168.100.10:5076/api/Reservation?lectureid=' + valueAfterSecondSlash;
+        const formData = new FormData(event.target);
+        const name = formData.get('name');
+        const mail = formData.get('email');
+        const currentDate = new Date();
+        const createdDate = currentDate.toISOString();
+
+
+        const requestOptions = {
             method: 'POST',
-            body: JSON.stringify({ name, email, date }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-    };
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, mail, createdDate })
+        };
+
+        fetch(fetchstring, requestOptions)
+            .then(response => {
+                if (response.status === 204) {
+                    window.alert('Your reservation was added successfully');
+                    // Process the response here
+                } else {
+                    window.alert(`An error occurred: ${response.status}`);
+                    // Handle the error here
+                }
+            });
+    }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Name:
-                <input type="text" value={name} onChange={(event) => setName(event.target.value)} />
-            </label>
-            <label>
-                Email:
-                <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} />
-            </label>
-            <button type="submit">Submit</button>
-        </form>
+        <div className={classes.form}>
+            <form  onSubmit={handleSubmit}>
+                <label>
+                    Name:
+                    <input type="text" name="name" />
+                </label>
+                <label>
+                    Email:
+                    <input type="email" name="email" />
+                </label>
+                <button className={classes.button} type="submit">Submit</button>
+            </form>
+        </div>
     );
-};
+}
 
 export default AddReservationPage;

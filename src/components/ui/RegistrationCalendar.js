@@ -26,7 +26,7 @@ function RegistrationCalendar(props) {
             for (let i = 0; i < props.items.length; i++) {
                 if (props.items[i].date.substr(8, 2) === dates[col - 1].substr(8, 2) && props.items[i].date.substr(11, 2) === hours[row].substr(0, 2)) {
                     return (
-                        <Link to={getNavigationLink(props.items[i].id)}>
+                        <Link to={getNavigationLink(props.items[i].id)} lectureid={props.items[i].id}>
                             <div className={classes.colContent} >
                                 <p>{props.items[i].name}</p>
                                 <p>Couch: {props.items[i].couch}</p>
