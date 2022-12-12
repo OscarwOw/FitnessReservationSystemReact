@@ -1,0 +1,40 @@
+.form {
+    justify-content: center;
+    text-align: center;
+    width: 500px;
+    padding: 20px;
+    background: grey;
+    border: 1px solid gray;
+    border-radius: 4px;
+}
+.button {
+    box-shadow: 0px 1px 0px 0px #f0f7fa;
+    background: linear-gradient(to bottom, #33bdef 5%, #0f5dbd 100%);
+    background-color: #33bdef;
+    border-radius: 8px;
+    border: 1px solid #057fd0;
+    display: inline-block;
+    cursor: pointer;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 16px;
+    letter-spacing: -1px;
+    word-spacing: 1.4px;
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    padding: 6px 24px;
+    text-shadow: 2px 2px 12px #5b6178;
+}
+
+.button:hover {
+    background: linear-gradient(to bottom, #0f5dbd 5%, #33bdef 100%);
+    background-color: #0f5dbd;
+}
+
+.button:active {
+    position: relative;
+    top: 1px;
+}
