@@ -33,7 +33,7 @@
         color: #00C6A7;
     }
 
-input {
+.burgerMenu {
     display: block;
     width: 35px;
     height: 25px;
@@ -46,7 +46,7 @@ input {
 }
 
 /* Burger menu */
-span {
+.burgerBar {
     display: block;
     width: 33px;
     height: 4px;
@@ -59,26 +59,26 @@ span {
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0), background 0.5s cubic-bezier(0.77,0.2,0.05,1.0), opacity 0.55s ease;
 }
 
-    span:first-child {
+    .burgerBar:first-child {
         transform-origin: 0% 0%;
     }
 
-    span:nth-child(3) {
+    .burgerBar:nth-child(3) {
         transform-origin: 0% 100%;
     }
 
-input:checked ~ span {
+.burgerMenu:checked ~ .burgerBar {
     opacity: 1;
     transform: rotate(45deg) translate(3px,-1px);
     background: #252f51;
 }
 
-    input:checked ~ span:nth-child(4) {
+    .burgerMenu:checked ~ .burgerBar:nth-child(4) {
         opacity: 0;
         transform: rotate(0deg) scale(0.2, 0.2);
     }
 
-    input:checked ~ span:nth-child(3) {
+    .burgerMenu:checked ~ .burgerBar:nth-child(3) {
         transform: rotate(-45deg) translate(-5px,11px);
     }
 
@@ -136,7 +136,7 @@ input:checked ~ span {
         margin: 10px 0;
     }
 
-    input:checked ~ .menu {
+    .burgerMenu:checked ~ .menu {
         transform: scale(1);
     }
 }
@@ -145,7 +145,7 @@ input:checked ~ span {
         display: none;
     }
 
-    span {
+    .burgerBar {
         display: none;
     }
 }
