@@ -29,6 +29,7 @@
     height: 100%;
     width: 100%;
     padding-top: 5px;
+    margin-top: 10px;
     background-color: rgba(207, 207, 207, 0.7);
     animation: ease-in-out;
     transition: 1.1s;

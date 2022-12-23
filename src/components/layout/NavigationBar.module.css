@@ -32,6 +32,10 @@
     .menuLink:hover {
         color: #00C6A7;
     }
+.loginItem {
+    border: 4px solid red;
+}
+
 
 .burgerMenu {
     display: block;
@@ -106,11 +110,25 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 600;
-    transition: color 0.3s ease;
+    transition: color 0.5s ease;
 }
 
     .menuLink:hover {
         color: #00C6A7;
+        transform: scale(1.1);
+    }
+
+.loginLink {
+    border: 2px solid white;
+    border-radius: 8%;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    transition: background-color 0.5s ease;
+}
+    .loginLink:hover {
+        background-color: black;
     }
 
 @media (max-width: 767px) {

@@ -60,24 +60,31 @@ function NavigationBar() {
                 <ul>
                     {!user && (
                         <>
+                                <li className={styles.menuItem}>
+                                <Link to="/login" className={`${styles.menuLink} ${styles.loginLink}`} >
+                                        Login
+                                    </Link>
+                                </li>
                             <li className={styles.menuItem}>
                                 <Link to="/register" className={styles.menuLink} >
                                     Register
                                 </Link>
-                            </li>
-                            <li className={styles.menuItem}>
-                                <Link to="/login" className={styles.menuLink} >
-                                    Login
-                                </Link>
-                            </li>
+                            </li>                            
                         </>
                     )}
                     {user && (
-                        <li className={styles.menuItem}>
-                            <Link to="/profile" className={styles.menuLink}>
-                                { user}
-                            </Link>
-                        </li>
+                        <>
+                            <li className={styles.menuItem}>
+                                <Link to="/profile" className={styles.menuLink}>
+                                    { user}
+                                </Link>
+                            </li>
+                            <li className={styles.menuItem}>
+                                <Link to="/" className={styles.menuLink} onClick={ handleLogoutClick}>
+                                    Logout
+                                </Link>
+                            </li>
+                        </>
                     )}
                 </ul>
             </div>
