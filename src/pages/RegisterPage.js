@@ -17,10 +17,34 @@ function RegisterPage() {
         setPassword(event.target.value);
     }
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
-        // You can now use the `username`, `email`, and `password` variables
-        // to send a request to your server to register the user
+        const response = await fetch('http://192.168.100.10:5076/api/Account/Register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: username,
+                email: email,
+                password: password
+            })
+        });
+
+        if (response.ok) {
+            console.log('well done')
+            alert('Register successful');
+            setIsLoggedIn(true);
+            const data = await response.json();
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('refreshToken', data.refreshToken);
+            localStorage.setItem('username', email);
+            loginCtx.login(email);
+
+
+        } else {
+            console.log('not well done')
+        }
     }
 
     return (

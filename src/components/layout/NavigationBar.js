@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './NavigationBar.module.css';
 import handleLinkClick from "../Engine/handleLinkClick";
-import handleLogoutClick from "../Engine/handleLogoutClick";
 import { useContext } from 'react';
 import loginContext from '../../store/LoginContext';
 
@@ -21,6 +20,21 @@ function NavigationBar() {
     const checkBoxRef = React.createRef();
     const loginCtx = useContext(loginContext);
     const user = loginCtx.LogedIn();
+
+
+
+    async function handleLogoutClick(event) {
+        event.preventDefault();
+        //e.preventDefault(); // prevent default action of the click event
+        window.localStorage.removeItem('username');
+        window.localStorage.removeItem('token');
+        window.localStorage.removeItem('refreshToken');
+        alert('Loged out');
+        loginCtx.logout();
+
+
+    }
+
 
     return (
         <nav className={styles.container}>
