@@ -7,6 +7,7 @@ function LoginPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const loginCtx = useContext(loginContext);
+    const { login } = useContext(loginContext);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     function handleUsernameChange(event) {
@@ -38,7 +39,7 @@ function LoginPage() {
             localStorage.setItem('token', data.token);
             localStorage.setItem('refreshToken', data.refreshToken);
             localStorage.setItem('username', username);
-            loginCtx.login(username);
+            login('username');
 
 
         } else {

@@ -10,13 +10,13 @@ const LoginContext = createContext({
 export function LoginContextProvider(props) {
     const [userState, setUserState] = useState();
     function addUser(username) {
-        setUserState(username)
+        setUserState(username);
     }
-    function GetUser() {
+    function GetUser() {  
         return userState;
     }
     function removeUser() {
-        setUserState(null)
+        setUserState(null);
     }
     const context = {
         user: userState,

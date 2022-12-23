@@ -2,8 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './NavigationBar.module.css';
 import handleLinkClick from "../Engine/handleLinkClick";
+import handleLogoutClick from "../Engine/handleLogoutClick";
 import { useContext } from 'react';
 import loginContext from '../../store/LoginContext';
+
+
+
 
 
 function handleBurgerMenuClick() {
@@ -80,7 +84,7 @@ function NavigationBar() {
                                 </Link>
                             </li>
                             <li className={styles.menuItem}>
-                                <Link to="/" className={styles.menuLink} onClick={ handleLogoutClick}>
+                                <Link className={styles.menuLink} onClick={handleLogoutClick}>
                                     Logout
                                 </Link>
                             </li>
