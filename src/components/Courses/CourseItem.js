@@ -12,19 +12,16 @@ function CourseItem(props) {
     return (
         
         <li>
-            <Card>
-                <div className={classes.cardContent}>
-                    <h2>{props.name}</h2>
-                    <p>{props.description}</p>
-                    <p>{props.length}</p>
-                    <p>{props.price}</p>
-                </div>
-                <div className={classes.btn}>
-                    <Link to={getNavigationLink(props.id)}>
-                        <button >Checks Lectures</button>
-                    </Link>
-                </div>
-            </Card>
+            <Link to={getNavigationLink(props.id)} className={classes.noDecoration}>
+                <Card>
+                    <div className={classes.cardContent}>
+                        <h2 className={classes.heading}>{props.name}</h2>
+                        <p>{props.description}</p>
+                        <p>Time: {props.length} minutes</p>
+                        <p>Price: {props.price} kc</p>
+                    </div>
+                </Card>
+            </Link>
         </li>
     );
 }
