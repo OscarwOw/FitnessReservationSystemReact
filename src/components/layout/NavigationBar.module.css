@@ -1,9 +1,12 @@
 .container {
-    position: relative;
+    position: fixed;
+    top: 0px;
+    width: 100%;
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    background: #252f51;
+    background: linear-gradient(rgba(37, 47, 81, 0.6),rgba(37, 47, 81, 0));
+    backdrop-filter: blur(2px);
     color: #cdcdcd;
     padding: 20px;
     z-index: 1;
