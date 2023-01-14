@@ -1,26 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './NavigationBar.module.css';
 import handleLinkClick from "../Engine/handleLinkClick";
 import { useContext } from 'react';
 import loginContext from '../../store/LoginContext';
-
-
-
-
-
-function handleBurgerMenuClick() {
-    const menuStyles = window.getComputedStyle(checkBoxRef);
-    console.log(menuStyles);
-}
-
+import { useEffect } from 'react';
 
 
 function NavigationBar() {
     const checkBoxRef = React.createRef();
     const loginCtx = useContext(loginContext);
     const user = loginCtx.LogedIn();
+    const [isClicked,setIsClicked] = useState(false)
+    const [isMobile, setIsMobile] = useState(false)
+    const [menuClass,setMenuClass] = useState("visiblePC")
+    const [listClass,setlistClass] = useState("menu")
+    const [listvisible,setlistvisible] = useState("visible")
+    const [burgervisible,setburgervisible] = useState("hidden")
 
+    const handleResize = () => {
+        if (window.innerWidth < 760) {
+            setIsMobile(true)
+            if(isClicked){
+               setMenuClass("visibleMb");
+               setlistClass("menuMb");
+               setlistvisible("visible");
+               setburgervisible("visible");
+               console.log("working");
+            }
+            else{
+                setMenuClass("visibleMb");
+                setlistClass("menuMb");
+                setlistvisible("hidden");
+                setburgervisible("visible");
+            }
+        } else {
+            setIsMobile(false)
+            setMenuClass("visiblePC");
+            setlistClass("menu");
+            setburgervisible("hidden");
+            setlistvisible("visible");
+        }
+      }
+
+    function handleBurgerMenuClick() {
+        //const menuStyles = window.getComputedStyle(checkBoxRef);
+        setIsClicked(!isClicked);
+        setlistvisible(isClicked?"hidden":"visible");
+        console.log(menuClass);
+    }
 
 
     async function handleLogoutClick(event) {
@@ -34,26 +62,18 @@ function NavigationBar() {
 
 
     }
+    useEffect(() => {
+        window.addEventListener("resize", handleResize)
+      })
 
 
     return (
-        <nav className={styles.container}>
-            {/* burger menu */}
-            <div className={styles.burgerMenuInput}>
-                <input type="checkbox" className={styles.burgerMenu} aria-label="Toggle menu" ref={checkBoxRef} onChange={handleBurgerMenuClick} />
-                <div className={styles.burgerBar}></div>
-                <div className={styles.burgerBar}></div>
-                <div className={styles.burgerBar}></div>
-            </div>
-            {console.log(new Date)}
-            {/* logo */}
-            <Link to="/" className={styles.logo}>
-                <img src="https://wweb.dev/resources/navigation-generator/logo-placeholder.png" alt="My Awesome Website" />
-            </Link>
+        <nav className={`${styles.container} ${styles[menuClass]}`}>
+            
 
             {/* menu items */}
-            <div className={styles.menu}>
-                <ul>
+            
+                <ul className={`${styles.menu} ${styles[listClass]} ${styles[listvisible]}`}>
                     <li className={styles.menuItem}>
                         <Link to="/" className={styles.menuLink} onClick={handleLinkClick}>
                             Home
@@ -73,19 +93,20 @@ function NavigationBar() {
                         <Link to="/about" className={styles.menuLink} onClick={handleLinkClick}>
                             About
                         </Link>
+
                     </li>
-                </ul>
-                <ul>
+                    </ul>
+                    <ul className={`${styles.menu} ${styles[listClass]} ${styles[listvisible]}`}>
                     {!user && (
                         <>
                                 <li className={styles.menuItem}>
                                 <Link to="/login" className={`${styles.menuLink} ${styles.loginLink}`} >
-                                        Login
+                                        Sign in
                                     </Link>
                                 </li>
                             <li className={styles.menuItem}>
                                 <Link to="/register" className={styles.menuLink} >
-                                    Register
+                                    Sign up
                                 </Link>
                             </li>                            
                         </>
@@ -104,8 +125,21 @@ function NavigationBar() {
                             </li>
                         </>
                     )}
+                    
                 </ul>
-            </div>
+
+                {/* burger menu */}
+                <ul className={`${styles.menu} ${styles[listClass]} ${styles[burgervisible]}`}>
+                    <li>
+                        <div className={styles.burgerMenuInput}>
+                            <input type="checkbox" className={styles.burgerMenu} aria-label="Toggle menu" ref={checkBoxRef} onChange={handleBurgerMenuClick} />
+                            <div className={styles.burgerBar}></div>
+                            <div className={styles.burgerBar}></div>
+                            <div className={styles.burgerBar}></div>
+                        </div>
+                    </li>
+                </ul>
+
         </nav>
     );
 }
