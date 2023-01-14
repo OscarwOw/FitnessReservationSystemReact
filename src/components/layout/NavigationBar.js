@@ -17,6 +17,7 @@ function NavigationBar() {
     const [listClass,setlistClass] = useState("menu")
     const [listvisible,setlistvisible] = useState("visible")
     const [burgervisible,setburgervisible] = useState("hidden")
+    const [animation,setanimation] = useState("");
 
     const handleResize = () => {
         if (window.innerWidth < 760) {
@@ -47,6 +48,8 @@ function NavigationBar() {
         //const menuStyles = window.getComputedStyle(checkBoxRef);
         setIsClicked(!isClicked);
         setlistvisible(isClicked?"hidden":"visible");
+        setanimation(isClicked?"animationback":"animation");
+
         console.log(menuClass);
     }
 
@@ -68,7 +71,7 @@ function NavigationBar() {
 
 
     return (
-        <nav className={`${styles.container} ${styles[menuClass]}`}>
+        <nav className={`${styles.container} ${styles[menuClass]} ${styles[animation]}`}>
             
 
             {/* menu items */}
