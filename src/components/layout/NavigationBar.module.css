@@ -148,6 +148,13 @@
     display: flex;
     flex-direction: column;
 }
+.animation{
+    animation: 0.5s ease-out 0s 1 slideInFromTop;
+}
+.animationback{
+    animation: 0.5s ease-out 0s 1 slideToTop;
+}
+
 .hidden{
     display: none;
 }
@@ -165,5 +172,23 @@
     }
 
 }
+@keyframes slideInFromTop {
+    0% {
+      transform: translateY(-75%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  @keyframes slideToTop {
+    0% {
+      transform: translateY(310%);
+      
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
 
 
