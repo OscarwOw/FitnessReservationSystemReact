@@ -2,19 +2,31 @@ import React, { useState } from 'react';
 import { useContext } from 'react';
 import loginContext from '../store/LoginContext';
 import { Navigate } from 'react-router-dom';
+import classes from './LoginPage.module.css';
 
 function LoginPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const loginCtx = useContext(loginContext);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isValidPassword, setValidPassword] = useState("noinput");
+    const [isValidUsername, setValidUsername] = useState("noinput");
 
     function handleUsernameChange(event) {
         setUsername(event.target.value);
+            setValidUsername("inputsuccess");
+            if(username===""){
+                setValidUsername("noinput");
+            }
+
     }
 
     function handlePasswordChange(event) {
         setPassword(event.target.value);
+        setValidPassword("inputsuccess");
+        if(password===""){
+            setValidPassword("noinput");
+        }
     }
 
      async function handleSubmit(event) {
@@ -43,6 +55,8 @@ function LoginPage() {
 
         } else {
             console.log('not well done')
+            setValidPassword("inputfail");
+            setValidUsername("inputfail");
         }
     }
 
@@ -54,21 +68,24 @@ function LoginPage() {
             </>
         );
     }
+    
     else { 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Username:
-                <input type="text" value={username} onChange={handleUsernameChange} />
-            </label>
-            <br />
-            <label>
-                Password:
-                <input type="password" value={password} onChange={handlePasswordChange} />
-            </label>
-            <br />
-            <button type="submit">Log In</button>
-        </form>
+
+            <form onSubmit={handleSubmit} className={classes.content}>
+                <label className={classes.label}>
+                    Username:
+                    <input type="text" value={username} onChange={handleUsernameChange} className={`${classes.input} ${classes[isValidUsername]} `} placeholder="Username"/>
+                </label>
+                <br />
+                <label className={classes.label}>
+                    Password:
+                    <input type="password" value={password} onChange={handlePasswordChange}  className={` ${classes.input} ${classes[isValidPassword]}`} placeholder="Password"/>
+                </label>
+                <br />
+                <button type="submit" className={classes.submit}>Log In</button>
+            </form>
+
     );
     }
 }
