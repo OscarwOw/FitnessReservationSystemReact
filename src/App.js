@@ -8,6 +8,7 @@ import HomePage from './pages/HomePage';
 import AddReservationPage from './pages/AddReservationPage';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
+import PriceList from './pages/PriceList';
 
 
 
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/calendar" element={<CalendarPage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/CreateReservation/:id" element={<AddReservationPage />} />
+                <Route path="/priceList" element={<PriceList />} />
                 <Route path="/Register" element={<RegisterPage />} />
                 <Route path="/Login" element={<LoginPage />} />
             </Routes>

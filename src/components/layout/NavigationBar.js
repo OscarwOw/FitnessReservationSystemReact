@@ -98,6 +98,12 @@ function NavigationBar() {
                         </Link>
 
                     </li>
+                    <li className={styles.menuItem}>
+                        <Link to="/priceList" className={styles.menuLink} onClick={handleLinkClick}>
+                            Price List
+                        </Link>
+
+                    </li>
                     </ul>
                     <ul className={`${styles.menu} ${styles[listClass]} ${styles[listvisible]}`}>
                     {!user && (
