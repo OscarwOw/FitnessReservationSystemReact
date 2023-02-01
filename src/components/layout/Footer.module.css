@@ -12,7 +12,7 @@
     flex-wrap: wrap;
     bottom: 0;
     border-top: 5px solid;
-    border-image: linear-gradient(to right, transparent, black, transparent) 5;
+    border-image: linear-gradient(to right, transparent, red, transparent) 5;
     color: azure;
     background-color: rgba(37, 47, 81, 1);
   }
@@ -21,4 +21,10 @@
     flex: 1;
     text-align: center;
     margin: 10px;
+  }
+  .social{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 40px;
   }
