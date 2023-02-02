@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import CoursesList from '../components/Courses/CoursesList';
 
-import { Routes, Route, Link, Outlet } from 'react-router-dom';
 
 
 function CoursesPage() {
